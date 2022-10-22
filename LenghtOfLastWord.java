@@ -1,6 +1,11 @@
+/* 
+Given a string str consisting of words and spaces, return the length of the last word in the string.
+A word is a maximal substring consisting of non-space characters only. 
+*/
+
 package LenghtOfLastWord;
 
-public class expm1 {
+public class LenghtOfLastWord {
 
 	public static int lenghtOfst (String str) {
 
@@ -15,7 +20,7 @@ public class expm1 {
 		int len = newStr.length();
 		String [] arrstr = newStr.split(" ");
 
-		for(int i=1; i<arrstr.length ; i++) {
+		for(int i=0; i<arrstr.length ; i++) {
 			while(i!= arrstr.length-1) {
 				i++; 
 			}
@@ -26,11 +31,10 @@ public class expm1 {
 	}
 	public static void main(String[] args) {
 
-		String str = "nvjdk      jk";
+		String str = "Hello World";
 
 		System.out.print( lenghtOfst(str) );
 
 
 	}
-
 }
