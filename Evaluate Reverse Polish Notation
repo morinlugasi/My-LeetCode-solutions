@@ -1,0 +1,55 @@
+The problem: You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
+Evaluate the expression. Return an integer that represents the value of the expression.
+
+Note that:
+The valid operators are '+', '-', '*', and '/'.
+Each operand may be an integer or another expression.
+The division between two integers always truncates toward zero.
+There will not be any division by zero.
+The input represents a valid arithmetic expression in a reverse polish notation.
+The answer and all the intermediate calculations can be represented in a 32-bit integer.
+Example 1:
+Input: tokens = ["2","1","+","3","*"]
+Output: 9
+Explanation: ((2 + 1) * 3) = 9
+
+*********************************************************
+class Solution {
+    public int evalRPN(String[] tokens) {
+    
+        int a1, a2, a3;
+        Stack<Integer> ans = new Stack<>();
+        for (int i =0; i< tokens.length ; i++){
+            if (!tokens[i].equals("+") && !tokens[i].equals("-") && !tokens[i].equals("*") && !tokens[i].equals("/")) {
+                ans.push(Integer.parseInt(tokens[i]));
+            }
+            else {
+                a2 = ans.pop();
+                a1 = ans.pop();
+            switch(tokens[i]){
+                case "+" :
+                 a3 = a1 + a2;
+                 ans.push(a3);
+                 break;
+
+                 case "*":
+                 a3 = a1 * a2;
+                 ans.push(a3);
+                 break;
+
+                 case "-":
+                 a3 = a1 - a2;
+                 ans.push(a3);
+                 break;
+
+                 case "/":
+                 a3 = a1 / a2;
+                 ans.push(a3);
+                 break;
+
+            }
+        }
+    }
+     return ans.pop();
+    }
+}
